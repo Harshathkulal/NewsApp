@@ -7,6 +7,7 @@ function reload() {
     window.location.reload();
 }
 
+// Fuction Which Calls API
 async function fetchNews(query) {
     const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
     const data = await res.json();
@@ -14,6 +15,7 @@ async function fetchNews(query) {
     console.log(data.articles);
 }
 
+// creating Multiple Cards of News
 function bindData(articles) {
     const cardsContainer = document.getElementById("cards-container");
     const newsCardTemplate = document.getElementById("template-news-card");
@@ -27,6 +29,8 @@ function bindData(articles) {
         cardsContainer.appendChild(cardClone);
     });
 }
+
+//Filling Data To that Card
 function fillDataInCard(cardClone, article) {
     const newsImg = cardClone.querySelector("#news-img");
     const newsTitle = cardClone.querySelector("#news-title");
@@ -37,7 +41,7 @@ function fillDataInCard(cardClone, article) {
     newsTitle.innerHTML = article.title;
     newsDesc.innerHTML = article.description;
 
-    
+// Clicking The Card Takes to News Location  
     cardClone.firstElementChild.addEventListener("click", () => {
         window.open(article.url, "_blank");
     });
