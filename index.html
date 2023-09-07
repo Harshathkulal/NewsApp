@@ -19,18 +19,18 @@
             <!--Nav Item-->
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex justify-content-center">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Cricket</a>
+                <a class="nav-link active" aria-current="page" href="#" onclick="onNavItemClick('IPL')">Cricket</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Politics</a>
+                <a class="nav-link active" aria-current="page" href="#" onclick="onNavItemClick('politics')">Politics</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Education</a>
+                <a class="nav-link active" aria-current="page" href="#" onclick="onNavItemClick('Education')">Education</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="eg:Science" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <input class="form-control me-2" id="search-text" type="search" placeholder="eg:Science" aria-label="Search">
+              <button class="btn btn-outline-success" id="search-button" type="submit">Search</button>
             </form>
           </div>
         </div>

@@ -1,4 +1,4 @@
-const API_KEY = "1d3a0eefa97b499d8fbc4ee93eeb40b7";
+const API_KEY = "9fce2f59cc7444cbbceafff66907dcd8";
 const url = "https://newsapi.org/v2/everything?q=";
 
 window.addEventListener("load", () => fetchNews("India"));
@@ -12,7 +12,6 @@ async function fetchNews(query) {
     const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
     const data = await res.json();
     bindData(data.articles);
-    console.log(data.articles);
 }
 
 // creating Multiple Cards of News
@@ -41,8 +40,28 @@ function fillDataInCard(cardClone, article) {
     newsTitle.innerHTML = article.title;
     newsDesc.innerHTML = article.description;
 
+    const date = new Date(article.publishedAt).toLocaleString("en-US", {
+        timeZone: "Asia/Jakarta",
+    });
+
+    newsSource.innerHTML = `${article.source.name} · ${date}`;
+
 // Clicking The Card Takes to News Location  
     cardClone.firstElementChild.addEventListener("click", () => {
         window.open(article.url, "_blank");
     });
 }
+
+function onNavItemClick(id) {
+    fetchNews(id);
+}
+
+const searchButton = document.getElementById("search-button");
+const searchText = document.getElementById("search-text");
+
+
+searchButton.addEventListener("click", () => {
+    const query = searchText.value;
+    if (!query) return;
+    fetchNews(query);
+});
