@@ -21,13 +21,19 @@ function bindData(articles) {
 
     cardsContainer.innerHTML = "";
 
-    articles.forEach((article) => {
-        if (!article.urlToImage) return;
-        const cardClone = newsCardTemplate.content.cloneNode(true);
-        fillDataInCard(cardClone, article);
-        cardsContainer.appendChild(cardClone);
-    });
+    if (Array.isArray(articles)) {
+        articles.forEach((article) => {
+            if (!article.urlToImage) return;
+            const cardClone = newsCardTemplate.content.cloneNode(true);
+            fillDataInCard(cardClone, article);
+            cardsContainer.appendChild(cardClone);
+        });
+    } else {
+        // Handle the case where 'articles' is not an array
+        console.error("Articles is not an array or is undefined.");
+    }
 }
+
 
 //Filling Data To that Card
 function fillDataInCard(cardClone, article) {
